@@ -208,6 +208,9 @@ class Command:
     def on_start(self, ed_self): # subcommand hotkeys dont work without this
         pass
 
+    def on_open(self, ed_self):
+        pass
+
     def on_exit(self, ed_self):
         self.cancel_build()
 
