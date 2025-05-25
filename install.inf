@@ -3,7 +3,7 @@ title=Runner
 desc=Allows to run external tools, supports build-systems from Sublime Text editor
 type=cudatext-plugin
 subdir=cuda_runner
-homepage=https://github.com/halfbrained/cuda_runner
+homepage=https://github.com/CudaText-addons/cuda_runner
 
 [item1]
 section=events
