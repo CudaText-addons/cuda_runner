@@ -455,10 +455,10 @@ class Build:
             txt = f.read()
 
         # remove stream comments: /* ... */
-        if '/*' in txt:
-            txt = re.sub('/\*.*?\*/', '', txt, flags=re.DOTALL)  # all done consecutively once, no need to compile
-        if '\ ' in txt: # json chokes on escaped spaces
-            txt = txt.replace('\ ', ' ')
+        if r'/*' in txt:
+            txt = re.sub(r'/\*.*?\*/', '', txt, flags=re.DOTALL)  # all done consecutively once, no need to compile
+        if r'\ ' in txt: # json chokes on escaped spaces
+            txt = txt.replace(r'\ ', ' ')
 
         self.j = _json_loads(txt)
         if self.j is None:
@@ -772,7 +772,8 @@ VAR_EXPAND_MAP = {
     # The extension of the current project file.
     '$project_extension':   lambda: os.path.splitext(os.path.basename(get_proj().get('filename', '')))[1],
 }
-re_expand = re.compile('(?<!\\\)(\$[a-zA-Z_]+|\$\{[^}]+\}*)')
+
+re_expand = re.compile(r'(?<!\\)(\$[a-zA-Z_]+|\$\{[^}]+\}*)')
 
 def expandvars(s, mp=VAR_EXPAND_MAP, no_match_val=None, proj_err=[False]):
     """ if need to check if needed a project in expand - give one-item-list in 'proj_err'
